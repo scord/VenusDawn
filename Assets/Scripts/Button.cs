@@ -11,10 +11,12 @@ public class Button : MonoBehaviour {
     [SerializeField]
     private float activationDepth;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         activatable = subject.GetComponent<IActivatable>();
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -32,6 +34,7 @@ public class Button : MonoBehaviour {
             {
            
                 off = false;
+                audioSource.Play();
                 activatable.Activate();
             }
             }
